@@ -8,11 +8,11 @@
 // // Async await
 const asyncHandler = (fuct) => async (req, res, next) => {
   try {
-    await fuct(req, res, next);
+    return await fuct(req, res, next);
   } catch (error) {
-    res.status(err.code || 500).json({
+    return res.status(error.code || 500).json({
       success: false,
-      message: err.message,
+      message: error.message,
     });
   }
 };
